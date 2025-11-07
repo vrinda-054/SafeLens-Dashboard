@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gradient-main text-white antialiased;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-xl;
+  }
+  
+  .glass-card-hover {
+    @apply glass-card hover:bg-white/15 transition-all duration-300 cursor-pointer;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-light to-white bg-clip-text text-transparent;
+  }
+  
+  .btn-primary {
+    @apply px-6 py-3 bg-primary-orange hover:bg-primary-light text-white font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-glow-orange;
+  }
+  
+  .btn-secondary {
+    @apply px-6 py-3 bg-primary-blue hover:bg-primary-blue/80 text-white font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-glow-blue;
+  }
+
+  .leaflet-container {
+    @apply rounded-xl;
+    z-index: 1;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-white/5 rounded-full;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-white/20 rounded-full hover:bg-white/30;
+  }
+}
+
+/* Leaflet custom marker styles */
+.hazard-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  animation: pulse 2s infinite;
+}
+
+.hazard-marker.critical {
+  background-color: #EF4444;
+}
+
+.hazard-marker.high {
+  background-color: #F97316;
+}
+
+.hazard-marker.medium {
+  background-color: #F59E0B;
+}
+
+.hazard-marker.low {
+  background-color: #10B981;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+/* Loading spinner */
+.spinner {
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  border-top: 3px solid #DB6A00;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
